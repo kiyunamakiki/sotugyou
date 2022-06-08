@@ -1,11 +1,12 @@
 .header{
-    background-color: aqua;
+    background-color: white;
 }
 
-.main{
-    background-color: #8DBBC6;
+body {
+	background: #8DBBC6;
 }
 
 .footer{
-    background-color: aqua;
+    background-color: #8DBBC6;
 }
+
