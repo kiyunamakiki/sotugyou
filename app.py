@@ -1,5 +1,7 @@
-from  flask import Flask, render_template
+from  flask import Flask, render_template ,request
 import random
+# db接続
+import sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
@@ -17,14 +19,29 @@ def template():
 # 声かけランダム
 @app.route('/word')
 def word():
-    word_list = ["１分でできることもいいね！","ずーっと気になってることやってみる？","１日１つもいいね！","カップラーメンやってる間にやっちゃう？","深呼吸する時間はどう？","朝起きてコップ１杯のの白湯いいらしいよ！","自分を褒めまくるのもいいね"]
+    word_list = ["１分でできることもいいね！","ずーっと気になってることやってみる？","１日１つもいいね！","カップラーメンできる間にやっちゃう？","深呼吸する時間意識してみる？","朝起きてコップ１杯の白湯いいらしいよ！","自分を褒めまくるのもいいね"]
     py_word = random.choice(word_list)
     return render_template("word.html",word = py_word)
 
-# add タスク入力   
-@app.route('/add')
+# タスク入力
+@app.route("/add",methods = ["GET"])
 def add():
     return render_template("add.html")
+
+@app.route("/add",methods = ["POST"])
+def add_post():
+    py_task = request.form.get("task")
+
+    print(py_task)
+    # py_user_id = session["user_id"]
+    # py_task = request.form.get("task")
+
+    # conn = sqlite3.connect('flasktest.db')
+    # c = conn.cursor()
+    # c.execute("INSERT INTO tasks (taks,user_id) VALUES(?,?)",(py_task,user_id))
+    # conn.commit()
+    # conn.close()
+    # return redirect("/list")
 
 # edit
 @app.route('/edit')
