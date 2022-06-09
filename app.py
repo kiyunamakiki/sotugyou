@@ -1,4 +1,5 @@
 from  flask import Flask, render_template
+import random
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
@@ -12,6 +13,59 @@ def index():
 def template():
     py_name = "cookie"
     return render_template("index.html")
+
+# 声かけランダム
+@app.route('/word')
+def word():
+    word_list = ["１分でできることもいいね！","ずーっと気になってることやってみる？","１日１つもいいね！","カップラーメンやってる間にやっちゃう？","深呼吸する時間はどう？","朝起きてコップ１杯のの白湯いいらしいよ！","自分を褒めまくるのもいいね"]
+    py_word = random.choice(word_list)
+    return render_template("word.html",word = py_word)
+
+# add タスク入力   
+@app.route('/add')
+def add():
+    return render_template("add.html")
+
+# edit
+@app.route('/edit')
+def edit():
+    return render_template("edit.html")
+
+# list一覧
+@app.route('/list')
+def list():
+    return render_template("list.html")
+
+# login
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
+# regist
+@app.route('/regist')
+def regist():
+    return render_template("regist.html")
+
+# 以下未使用
+# @app.route('/')
+# def ():
+#     return render_template(".html")
+
+# @app.route('/')
+# def ():
+#     return render_template(".html")
+
+# @app.route('/')
+# def ():
+#     return render_template(".html")
+
+# @app.route('/')
+# def ():
+#     return render_template(".html")
+
+# @app.route('/')
+# def ():
+#     return render_template(".html")
 
 # @app.route("/list")
 # def list():
