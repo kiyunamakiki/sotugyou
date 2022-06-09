@@ -2,8 +2,13 @@
 {%block content%}
 
 
-
-<p>regist</p>
+<form action="/regist" method="post">
+<p>ユーザー登録</p>
+<input type="text" name="member_name" value="ニックネーム">
+<input type="password" name="member_password" value="パスワード">
+<input type="submit" name="save" value="登録">
+</form>
+    
 
 
 {%endblock%}
