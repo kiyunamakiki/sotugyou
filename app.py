@@ -23,24 +23,23 @@ def template():
 # login画面用＿残す
 @app.route("/login")
 def login():
-    return render_template("index.html")
+    return render_template("login.html")
 
 # login‗登録済みの方
 @app.route("/login",methods = ["POST"])
 def login_post():
     py_name = request.form.get("member_name")
-    py_password = request.form.get("member_password")
-    
+    py_password = request.form.get("member_password") 
     # Dbに接続
     conn = sqlite3.connect('cookie.db')
     c = conn.cursor()
-    c.execute("SELECT id FROM user WHERE name = ? AND password = ?",(py_name,py_password))
+    c.execute("SELECT id FROM members WHERE name = ? AND password = ?",(py_name,py_password))
     user_id = c.fetchone()
     conn.close()
     
     if user_id == None:
         message = "ユーザー名かパスワードが間違っています"
-        return render_template("index.html",message = message)
+        return render_template("login.html",message = message)
     
     else:
         session["user_id"] = user_id[0]
@@ -58,6 +57,7 @@ def add():
 def add_post():
     py_user_id = session["user_id"]
     py_task = request.form.get("task")
+    # db
     conn = sqlite3.connect('cookie.db')
     c = conn.cursor()
     c.execute("INSERT INTO tasks (task,user_id) VALUES(?,?)",(py_task,py_user_id))
@@ -72,14 +72,16 @@ def regist():
 
 @app.route("/regist",methods = ["POST"])
 def regist_post():
-    py_name = request.form.get("member_name")
-    py_password = request.form.get("member_password")
-    conn = sqlite3.connect('cookie.db')
-    c = conn.cursor()
-    c.execute("INSERT INTO members VALUES(null,?,?)",(py_name,py_password))
-    conn.commit()
-    conn.close()
-    return "登録しました"   
+        py_name = request.form.get("member_name")
+        py_password = request.form.get("member_password")
+        # db
+        conn = sqlite3.connect('cookie.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO members VALUES(null,?,?)",(py_name,py_password))
+        conn.commit()
+        conn.close()
+        return "登録しました" 
+
 
 # タスクリスト表示
 @app.route("/list")
@@ -88,15 +90,12 @@ def list():
         # DB接続
         py_user_id = session["user_id"]
         conn = sqlite3.connect("cookie.db")
-        # DBを操作できるようにする
         c = conn.cursor()
-        # 実行したいSQL文を書く
         c.execute("select id, task from tasks WHERE user_id = ?",(py_user_id,))
         # タスクリストを入れる配列を定義
         task_list = []
         for row in c.fetchall():
             task_list.append({"id":row[0],"task":row[1]})
-        # DB接続終了
         c.close()
         print(task_list)
         return render_template("list.html",task_list = task_list)
@@ -108,7 +107,7 @@ def list():
 @app.route("/edit/<int:id>")
 def edit(id):
     if "user_id" in session:
-        conn = sqlite3.connect("flasktest.db")
+        conn = sqlite3.connect("cookie.db")
         c = conn.cursor()
         c.execute("SELECT task FROM tasks WHERE id = ?;",(id,))
         task = c.fetchone()
@@ -129,9 +128,7 @@ def edit_post():
     py_id = request.form.get("task_id")
     # DB接続
     conn = sqlite3.connect("cookie.db")
-    # DBを操作できるようにする
     c = conn.cursor()
-    # 実行したいSQL文を書く
     print(py_task)
     # breakpoint()
     c.execute("UPDATE tasks SET task= ? where id =?",(py_task,py_id))
@@ -145,14 +142,11 @@ def edit_post():
 def del_get(id):
     # 入力フォームからデータを受け取る
     conn = sqlite3.connect("cookie.db")
-    # DBを操作できるようにする
     c = conn.cursor()
-    # 実行したいSQL文を書く
     c.execute("DELETE FROM tasks WHERE id = ?",(id,))
     conn.commit()
     conn.close()
     return redirect("/list")
-
 
 
 
@@ -252,7 +246,14 @@ def logout():
 # #         return redirect("/login")
 
 
+@app.errorhandler(403)
+def mistake403(code):
+    return 'There is a mistake in your url!'
 
+
+@app.errorhandler(404)
+def notfound404(code):
+    return "404だよ！！見つからないよ！！！ぱわー！"
 
 
 
