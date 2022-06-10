@@ -1,8 +1,12 @@
 {% extends "index.html" %}
 {% block content %}
 
+
+
 <table border="1">
     {% for item in task_list %}
+
+
     <tr>
         <td>{{item["id"]}}</td>
         <td>{{item["task"]}}</td>
@@ -10,9 +14,16 @@
         <td><a href="/del/{{item['id']}}">削除</a></td>
 
     </tr>
+
     {% endfor %}
 </table>
 
+<a>{{word}}</a>
+
 <button><a href="/add">タスク追加ページへ</a></button>
 <a href="/logout">ログアウト</a>
+
+
+
+
 {% endblock %}

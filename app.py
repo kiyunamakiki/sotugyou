@@ -68,7 +68,8 @@ def add_post():
 # 新規ユーザー登録
 @app.route("/regist")
 def regist():
-    return render_template("regist.html")
+    return render_template("index.html")
+    # regist.html
 
 @app.route("/regist",methods = ["POST"])
 def regist_post():
@@ -102,6 +103,13 @@ def list():
 
     else:
         return redirect("/login")
+
+# 声かけランダム
+@app.route('/list')
+def word():
+    word_list = ["１分でできることもいいね！","ずーっと気になってることやってみる？","１日１つもいいね！","カップラーメンできる間にやっちゃう？","深呼吸する時間意識してみる？","朝起きてコップ１杯の白湯いいらしいよ！","自分を褒めまくるのもいいね"]
+    py_word = random.choice(word_list)
+    return render_template("list.html",word = py_word)
 
 # 編集機能
 @app.route("/edit/<int:id>")
@@ -162,12 +170,6 @@ def logout():
 #     py_name = "cookie"
 #     return render_template("index.html")
 
-# # 声かけランダム
-# @app.route('/word')
-# def word():
-#     word_list = ["１分でできることもいいね！","ずーっと気になってることやってみる？","１日１つもいいね！","カップラーメンできる間にやっちゃう？","深呼吸する時間意識してみる？","朝起きてコップ１杯の白湯いいらしいよ！","自分を褒めまくるのもいいね"]
-#     py_word = random.choice(word_list)
-#     return render_template("word.html",word = py_word)
 
 # # タスク入力
 # @app.route("/add",methods = ["GET"])
