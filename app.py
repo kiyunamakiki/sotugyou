@@ -20,7 +20,33 @@ def template():
     py_name = "SUNABACO"
     return render_template("index.html",name = py_name)
 
-# login
+# login画面用＿残す
+@app.route("/login")
+def login():
+    return render_template("index.html")
+
+# login‗登録済みの方
+@app.route("/login",methods = ["POST"])
+def login_post():
+    py_name = request.form.get("member_name")
+    py_password = request.form.get("member_password")
+    
+    # Dbに接続
+    conn = sqlite3.connect('cookie.db')
+    c = conn.cursor()
+    c.execute("SELECT id FROM user WHERE name = ? AND password = ?",(py_name,py_password))
+    user_id = c.fetchone()
+    conn.close()
+    
+    if user_id == None:
+        message = "ユーザー名かパスワードが間違っています"
+        return render_template("index.html",message = message)
+    
+    else:
+        session["user_id"] = user_id[0]
+        return redirect("/list")
+
+# task追加
 @app.route('/add',methods = ["GET"])
 def add():
     if "user_id" in session:
@@ -39,11 +65,10 @@ def add_post():
     conn.close()
     return redirect("/list")
 
-# タスクをｄｂについか
+# 新規ユーザー登録
 @app.route("/regist")
 def regist():
     return render_template("regist.html")
-
 
 @app.route("/regist",methods = ["POST"])
 def regist_post():
@@ -128,36 +153,7 @@ def del_get(id):
     conn.close()
     return redirect("/list")
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
 
-
-@app.route("/login",methods = ["POST"])
-def login_post():
-    # フォームから送られてきたデータを取得する
-    # request.form.get("名前") タスクの内容を取得する
-    py_name = request.form.get("member_name")
-    py_password = request.form.get("member_password")
-    
-    # Dbに接続する
-    conn = sqlite3.connect('cookie.db')
-    # カーソルを取得する
-    c = conn.cursor()
-    # SQL
-    c.execute("SELECT id FROM members WHERE name = ? AND password = ?",(py_name,py_password))
-    # データを取得する
-    user_id = c.fetchone()
-    # DBを閉じる
-    conn.close()
-    
-    if user_id == None:
-        message = "ユーザー名かパスワードが間違っています"
-        return render_template("login.html",message = message)
-    
-    else:
-        session["user_id"] = user_id[0]
-        return redirect("/list")
 
 
 @app.route("/logout")

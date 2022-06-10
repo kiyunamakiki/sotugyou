@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="タスク管理">
+    <meta name="description" content="カレンダーに書き込まないようなタスクを実行">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TasCookie</title>
     <link rel="stylesheet" href="../static/style.css">
@@ -10,16 +12,35 @@
 
 </head>
 <body>
-    <h1 class = "header">TasCookie</h1>
+    <header>
+        <h1 class = "header">TasCookie</h1>
+        <header>
+            <button type="button" class="drawer-toggle drawer-hamburger">
+            <span class="sr-only">toggle navigation</span>
+            <span class="drawer-hamburger-icon"></span>
+            </button>
+
+        <ul class="drawe-menu">
+            <li><a class="drawer-menu-item" href="#sec1">できた！タスクをみる</a></li>
+            <li><a class="drawer-menu-item" href="#sec2">モンスターの様子をみる</a></li>
+        </ul>
+    </header>
 
     {% block content %}
 
-
-
+    <form action="/login" method="post">
+        <p>ログインする</p>
+        <input type="text" name="member_name" value="ユーザー名">
+        <input type="password" name="member_password" value="パスワード">
+        <input type="submit" name="save" value="ログイン">
+        </form>
+        <p class = "error">{{message}}</p>
+        
+        <button onclick="location.href='http://127.0.0.1:5000/regist'">新規ユーザー登録はこちら</button>
 
     {% endblock %}
 
-    <p class = "footer">©2022SUNABACO.online18th_TeamCookie</p>
+    <p class = "footer"> &copy; 2022SUNABACO.online18th_TeamCookie</p>
 
     <script src="jquery-3.6.0.js"></script>
     <script type="text/javascript" src="../static/main.js"></script>
