@@ -12,33 +12,45 @@
 
 </head>
 <body>
-    <div class="header">
-        <img src="../static/image/logo.png">
-        <!-- <a href="logo"><img src="../static/image/logo.png" alt="topへ"> -->
-        <!-- <div class="header_list">
-            <button type="button" class="drawer-toggle drawer-hamburger">
-            <span class="sr-only">toggle navigation</span>
-            <span class="drawer-hamburger-icon"></span>
-            </button> -->
-
-        <ul class="drawe-menu">
-            <li><a class="drawer-menu-item" href="#sec1">できた！タスクをみる</a></li>
-            <li><a class="drawer-menu-item" href="#sec2">モンスターの様子をみる</a></li>
-        </ul>
+    <header>
+        <div class="header-left">
+            <img src="../static/image/logo.png">
+        </div>
+        <div class="header-right">
+            <ul class="drawe-menu">
+                <li><a class="drawer-menu-item" href="#sec1">できた！タスクをみる</a></li>
+                <li><a class="drawer-menu-item" href="#sec2">モンスターの様子をみる</a></li>
+            </ul>
+        </div>
     </header>
 
     {% block content %}
+   
+    <div>
+        <!-- <a href="#"><img src="../static/image/top.png" alt="ここをクリック"> -->
+        <div class="top-wrapper">
+            <div class="container">
+                <h1>TasCookie</h1>
+                <p>カレンダーに書き込まないような小さなタスクをDoしよう</p>
+                <div class="btn-wrapper">
+                    <button onclick="location.href='http://127.0.0.1:5000/login'">ログイン</button>
+                    <button onclick="location.href='http://127.0.0.1:5000/regist'">新規ユーザー登録はこちら</button>
+                </div>
+            </div>
+        </div>
     
-    <a href="#"><img src="../static/image/top.png" alt="ここをクリック">
+
     
-        <form action="/login" method="post">
+        <!-- <form action="/login" method="post">
         <input type="text" name="member_name" value="ユーザー名">
         <input type="password" name="member_password" value="パスワード">
         <input type="submit" name="save" value="ログイン">
         </form>
         <p class = "error">{{message}}</p>
+         -->
         
-        <button onclick="location.href='http://127.0.0.1:5000/regist'">新規ユーザー登録はこちら</button>
+    
+    </div>
 
     {% endblock %}
 
