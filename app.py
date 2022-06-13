@@ -25,6 +25,11 @@ def template():
     py_name = "SUNABACO"
     return render_template("index.html",name = py_name)
 
+# test list
+@app.route("/test")
+def test():
+    return render_template("mainlist.html")
+
 # login画面用＿残す
 @app.route("/login")
 def login():
