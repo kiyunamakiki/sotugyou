@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <header>
+    <!-- <header>
         <div class="header-left">
             <img src="../static/image/logo.png">
         </div>
@@ -22,13 +22,40 @@
                 <li><a class="drawer-menu-item" href="#sec2">モンスターの様子をみる</a></li>
             </ul>
         </div>
-    </header>
+    </header> -->
+
+        <!-- Header Start -->
+        <header class="site-header">
+          <div class="wrapper site-header__wrapper">
+            <a href="#" class="brand">TasCookie</a>
+            <nav class="nav">
+              <button class="nav__toggle" aria-expanded="false" type="button">
+                menu
+              </button>
+              <ul class="nav__wrapper">
+                <li class="nav__item"><a href="#">『できた！』リストを見る</a></li>
+                <li class="nav__item"><a href="#">モンスター様子を見る</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <!-- Header End -->
+       
 
     {% block content %}
    
     <div>
-        <!-- <a href="#"><img src="../static/image/top.png" alt="ここをクリック"> -->
-        <div class="top-wrapper">
+        <section class="masthead" role="img" aria-label="Image Description">
+            <h1>
+              TasCookie
+            </h1>
+              <button>
+                ログインする
+              </button>
+          </section>
+              
+        <!-- 以前のこーど -->
+        <!-- <div class="top-wrapper">
             <div class="container">
                 <h1>TasCookie</h1>
                 <p>カレンダーに書き込まないような小さなタスクをDoしよう</p>
@@ -37,7 +64,7 @@
                     <button onclick="location.href='http://127.0.0.1:5000/regist'">新規ユーザー登録はこちら</button>
                 </div>
             </div>
-        </div>
+        </div> -->
     
 
     
