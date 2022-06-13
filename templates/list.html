@@ -1,27 +1,41 @@
 {% extends "index.html" %}
 {% block content %}
 
-
+<p>{{word}}</p>
 
 <table border="1">
     {% for item in task_list %}
-
-
-    <tr>
-        <td>{{item["id"]}}</td>
-        <td>{{item["task"]}}</td>
-        <td><a href="/edit/{{item['id']}}">編集</a></td>
-        <td><a href="/del/{{item['id']}}">削除</a></td>
-
-    </tr>
-
+        <tr class="tr">
+            <td class="td">{{item["task"]}}</td>
+            <td><a href="/edit/{{item['id']}}">編集</a></td>
+            <td><a href="/del/{{item['id']}}">削除</a></td>
+        </tr>
+        <tr class="tr">
+            <td class="td">{{item["task"]}}</td>
+            <td><a href="/edit/{{item['id']}}">編集</a></td>
+            <td><a href="/del/{{item['id']}}">削除</a></td>
+        </tr>
+        <tr class="tr">
+            <td class="td">{{item["task"]}}</td>
+            <td><a href="/edit/{{item['id']}}">編集</a></td>
+            <td><a href="/del/{{item['id']}}">削除</a></td>
+        </tr>
+        <tr class="tr">
+            <td class="td">{{item["task"]}}</td>
+            <td><a href="/edit/{{item['id']}}">編集</a></td>
+            <td><a href="/del/{{item['id']}}">削除</a></td>
+        </tr>
+    
     {% endfor %}
+
 </table>
 
-<a>{{word}}</a>
+<!-- 
+<a>{{word}}</a> -->
 
-<button><a href="/add">タスク追加ページへ</a></button>
-<a href="/logout">ログアウト</a>
+<button><a href="/add">タスク編集ページへ</a></button>
+
+<button><a href="/logout">ログアウト</a></button>
 
 
 

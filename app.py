@@ -2,6 +2,11 @@ from  flask import Flask ,render_template ,request ,redirect, session
 import random
 # db接続
 import sqlite3
+# 日付
+import datetime
+# できた！ボタンを押したら日付を取得したい
+today = datetime.date.today()
+print(today)
 
 app = Flask(__name__)
 app.secret_key = 'sunabaco'
@@ -105,11 +110,11 @@ def list():
         return redirect("/login")
 
 # 声かけランダム
-@app.route('/list')
+@app.route('/word')
 def word():
-    word_list = ["１分でできることもいいね！","ずーっと気になってることやってみる？","１日１つもいいね！","カップラーメンできる間にやっちゃう？","深呼吸する時間意識してみる？","朝起きてコップ１杯の白湯いいらしいよ！","自分を褒めまくるのもいいね"]
+    word_list = ["１分でできることもいいね！","ずーっと気になってることやってみる？","１日１つのタスクもいいね！","カップラーメンできる間にやっちゃう？","深呼吸する時間意識してみる？","朝起きてコップ１杯の白湯いいらしいよ！","自分を褒めまくるのもいいね"]
     py_word = random.choice(word_list)
-    return render_template("list.html",word = py_word)
+    return render_template("word.html",word = py_word)
 
 # 編集機能
 @app.route("/edit/<int:id>")
