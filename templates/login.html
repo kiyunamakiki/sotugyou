@@ -2,14 +2,13 @@
 {%block content%}
 
 <form action="/login" method="post">
-<p>ログイン</p>
-<input type="text" name="member_name" value="名前">
-<input type="password" name="member_password" value="パスワード">
-<input type="submit" name="save" value="ログイン">
+    <input type="text" name="member_name"  placeholder="登録した名前を入力">
+    <input type="text" name="member_password" placeholder="登録したパスワードを入力">
+    <input type="submit" name="save" value="ログイン">
 </form>
+
 <p class = "error">{{message}}</p>
 
-
-
+<button onclick="location.href='http://127.0.0.1:5000/'">topに戻る</button>
 
 {%endblock%}

@@ -1,13 +1,19 @@
 {%extends "index.html"%}
 {%block content%}
 
-<form action="/add" method="post"> 
-<p>タスクをいれてね</p>
-<input type="text" name="task">
-<input type="submit" value="送信" name="save">
 
-</form>
 
+
+
+<div>
+
+    <form action="/add" method="post"> 
+
+        <input type="text" name="task" placeholder="タスクを入力" >
+        <input type="submit" value="送信" name="save">
+
+    </form>
+</div>
 
 <button onclick="location.href='http://127.0.0.1:5000/list'">タスクリスト一覧に戻る</button>
 
