@@ -3,23 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="タスク管理">
+    <meta name="description" content="カレンダーに書き込まないようなタスクを実行">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TasCookie</title>
+    <title>TasCookie | 小さなタスク管理</title>
     <link rel="stylesheet" href="../static/style.css">
    
 
 </head>
 <body>
-    <h1 class = "header">TasCookie</h1>
+        <!-- Header Start -->
+        <header class="site-header">
+          <div class="wrapper site-header__wrapper">
+            <div class="spview">
+            <a href>
+                <img src="../static/image/ロゴ.png" alt="tascookie"></a>
+            </div>
+            <!-- <nav class="nav">
+              <button class="nav__toggle" aria-expanded="false" type="button">
+                menu
+              </button>
+              <ul class="nav__wrapper">
+                <li class="nav__item"><a href="#">『できた！』リストを見る</a></li>
+                <li class="nav__item"><a href="#">モンスター様子を見る</a></li>
+              </ul>
+            </nav> -->
+          </div>
+        </header>
+        <!-- Header End -->
+       
 
     {% block content %}
+   
+    <div>
+        <section class="masthead" role="img" aria-label="Image Description">
+            <h1>TasCookie</h1>
+            <p>カレンダーに書き込まないような小さなタスクを書き出して、サクッとこなそう！</p>
+            <button onclick="location.href='http://127.0.0.1:5000/login'">ログインする</button>
+            <button onclick="location.href='http://127.0.0.1:5000/regist'">新規ユーザー登録はこちら</button>
 
-
-
+        </section>  
+    
+    </div>
 
     {% endblock %}
 
-    <p class = "footer">©2022SUNABACO.online18th_TeamCookie</p>
+    <p class = "footer"> &copy; 2022SUNABACO.online18th_TeamCookie</p>
 
     <script src="jquery-3.6.0.js"></script>
     <script type="text/javascript" src="../static/main.js"></script>
