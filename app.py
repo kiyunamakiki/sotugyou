@@ -105,17 +105,13 @@ def list():
             task_list.append({"id":row[0],"task":row[1]})
         c.close()
         print(task_list)
-        return render_template("list.html",task_list = task_list)
+        word_list = ["１分でできることもいいね！","ずーっと気になってることやってみる？","１日１つのタスクもいいね！","カップラーメンできる間にやっちゃう？","深呼吸する時間意識してみる？","朝起きてコップ１杯の白湯いいらしいよ！","自分を褒めまくるのもいいね"]
+        py_word = random.choice(word_list)
+        return render_template("list.html",task_list = task_list, word = py_word)
 
     else:
         return redirect("/login")
 
-# どんなタスクにする？声かけランダム
-@app.route('/word')
-def word():
-    word_list = ["１分でできることもいいね！","ずーっと気になってることやってみる？","１日１つのタスクもいいね！","カップラーメンできる間にやっちゃう？","深呼吸する時間意識してみる？","朝起きてコップ１杯の白湯いいらしいよ！","自分を褒めまくるのもいいね"]
-    py_word = random.choice(word_list)
-    return render_template("word.html",word = py_word)
 
 # 編集機能
 @app.route("/edit/<int:id>")
@@ -132,14 +128,10 @@ def edit(id):
             return redirect("/list")
         else:
             return render_template("edit.html",task_id = id,task = task)
+   
     else:
         return redirect("/login")
 
-
-# # edit
-# @app.route('/edit')
-# def edit():
-#     return render_template("edit.html")
 
 @app.route("/edit",methods = ["POST"])
 def edit_post():
@@ -172,7 +164,7 @@ def del_get(id):
 @app.route("/logout")
 def logout():
     session.pop("user_id",None)
-    return redirect("/login")
+    return redirect("/")
 
 # ４０３
 @app.errorhandler(403)
@@ -182,7 +174,7 @@ def mistake403(code):
 # ４０４
 @app.errorhandler(404)
 def notfound404(code):
-    return "404だよ！！見つからないよ！！！ぱわー！"
+    return render_template("notf.html")
 
 # -------コピペ用ー－－－－－－－－－－－
 

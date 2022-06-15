@@ -1,10 +1,17 @@
-{%extends "index.html"%}
+<!-- {%extends "index.html"%}
 {%block content%}
 
 
 
-<p>edit</p>
+<div>
+    <form action="/edit">
+      <input type="hidden" value="{{item['task']}}" name="item_id">
+      内容：
+      <textarea name="comment" cols="30" rows="5">{{item["task"]}}</textarea><br>
+      <input type="submit" name="save" value="編集する">
+    </form>
+</div>
 
 
 
-{%endblock%}
+{%endblock%} -->

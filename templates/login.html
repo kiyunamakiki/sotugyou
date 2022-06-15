@@ -1,7 +1,7 @@
 {%extends "index.html"%}
 {%block content%}
 
-<div class="login">
+<section class="sec1">
     <form action="/login" method="post">
         <input type="text" name="member_name"  placeholder="登録した名前を入力">
         <input type="text" name="member_password" placeholder="登録したパスワードを入力">
@@ -11,6 +11,6 @@
     <p class = "error">{{message}}</p>
 
     <button onclick="location.href='http://127.0.0.1:5000/'">topに戻る</button>
-</div>
+</section>
 
 {%endblock%}

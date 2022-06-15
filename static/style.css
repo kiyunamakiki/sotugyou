@@ -122,7 +122,7 @@ img {
 h2 {
     font-size: 14px;
     text-align: center; 
-    margin: 16px 0;
+    margin: 16px 0 0 0;
 }
 
 button {
@@ -132,7 +132,7 @@ button {
     display: inline-block;
     border: none;
     padding: 0.75rem 1.5rem;
-    margin: 8px 0;
+    margin: 0.5rem 0;
     text-decoration: none;
     color: #ffffff;
     font-size: 1.2rem;
@@ -150,20 +150,22 @@ button:focus {
     outline-offset: -4px;
 }
 
-.login{
-    /* display: flex;
+/* 登録用フォーム */
+.sec1{
+    display: flex;
     justify-content: center; 
     align-items: center;
     flex-direction: column;
     text-align: center;
-    width: 100%;
+    /* width: 100%;
     height: 100vh;   */
-    background:#f491b2;
+    background:#8DBBC6;
     transition: background ease .25s;
-    border-radius: 50px;
+    border-radius: 30px;
     display: inline-block;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 5rem 5rem;
+    /* padding: 0.75rem 1.5rem; */
     margin: 60px 60px;
     text-decoration: none;
     color: #ffffff;
@@ -174,6 +176,37 @@ button:focus {
     -moz-appearance: none;
 }
 
+#sec3 {
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem 0;
+    text-decoration: none;
+}
+
+/* 新規登録フォーム */
+.sec4{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    /* width: 100%;
+    height: 100vh;   */
+    background:#8DBBC6;
+    transition: background ease .25s;
+    border-radius: 30px;
+    display: inline-block;
+    border: none;
+    padding: 5rem 5rem;
+    /* padding: 0.75rem 1.5rem; */
+    margin: 60px 60px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
 
  /* 以下前のcode */
 /* header{

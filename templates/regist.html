@@ -1,14 +1,16 @@
 {%extends "index.html"%}
 {%block content%}
 
-<form action="/regist" method="post">
-    <input type="text" name="member_name" placeholder="NEW!!!名前を入力">
-    <input type="text" name="member_password" placeholder="NEW!!!パスワード入力">
-    <input type="submit" name="save" value="登録">
-</form>
+<section class="sec4">
+    <form action="/regist" method="post">
+        <input type="text" name="member_name" placeholder="NEW!!!名前を入力">
+        <input type="text" name="member_password" placeholder="NEW!!!パスワード入力">
+        <input type="submit" name="save" value="登録">
+    </form>
 
-<button onclick="location.href='http://127.0.0.1:5000/'">topに戻る</button>
+    <button onclick="location.href='http://127.0.0.1:5000/'">topに戻る</button>
 
+</section>
 
 
 {%endblock%}
