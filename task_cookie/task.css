@@ -1,0 +1,52 @@
+
+.backimg {
+  background-image: url(../task_img/before.jpg);
+  height: 900px;
+  background-size: cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+#count {
+  background-color:lightskyblue;
+  color: antiquewhite;
+  font-size: 72px;
+  border-radius: 10px;
+  padding: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+#btn_count {
+  background-color: transparent;
+  border-color: transparent;
+  height: 9000px;
+  width: 100%;
+  font-size: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+
+.backimg2 {
+  background-image: url(../task_img/after.jpg);
+  background-size: cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
