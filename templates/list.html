@@ -15,7 +15,7 @@
     <table border="1" form style="margin: auto; width: 50%;">
         {% for item in task_list %}
             <tr class="tr">
-                <td class="td">{{item["id"]}}</td>
+                <!-- <td class="td">{{item["id"]}}</td> -->
                 <td class="td">{{item["task"]}}</td>
                 <td><a href="/edit/{{item['id']}}">編集</a></td>
                 <td><a href="/del/{{item['id']}}">削除</a></td>

@@ -208,6 +208,7 @@ button:focus {
     -moz-appearance: none;
 }
 
+
  /* 以下前のcode */
 /* header{
     background-color: #8DBBC6;
@@ -271,6 +272,7 @@ body {
     margin:0;
     font-family:'Courier New', Courier, monospace
 }
+
 
 .footer{
     background-color: #8DBBC6;

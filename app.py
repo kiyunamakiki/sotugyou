@@ -36,30 +36,30 @@ def login():
 # login‗登録済みの方
 @app.route("/login",methods = ["POST"])
 def login_post():
-    py_name = request.form.get("member_name")
-    py_password = request.form.get("member_password") 
-    # Dbに接続
-    conn = sqlite3.connect('cookie.db')
-    c = conn.cursor()
-    c.execute("SELECT id FROM members WHERE name = ? AND password = ?",(py_name,py_password))
-    user_id = c.fetchone()
-    conn.close()
-    
-    if user_id == None:
-        message = "ユーザー名かパスワードが間違っています"
-        return render_template("login.html",message = message)
-    
-    else:
-        session["user_id"] = user_id[0]
-        return redirect("/list")
+        py_name = request.form.get("member_name")
+        py_password = request.form.get("member_password") 
+        # Dbに接続
+        conn = sqlite3.connect('cookie.db')
+        c = conn.cursor()
+        c.execute("SELECT id FROM members WHERE name = ? AND password = ?",(py_name,py_password))
+        user_id = c.fetchone()
+        conn.close()
+        
+        if user_id == None:
+            message = "ユーザー名かパスワードが間違っています"
+            return render_template("login.html",message = message)    
+        else:
+            session["user_id"] = user_id[0]
+            return redirect("/list")
+
 
 # task追加
-@app.route('/add',methods = ["GET"])
+@app.route('/add', methods = ["GET"])
 def add():
     if "user_id" in session:
         return render_template("add.html")
     else:
-        return redirect("/login")
+        return redirect("/add")
 
 @app.route('/add',methods = ["POST"])
 def add_post():
@@ -98,7 +98,7 @@ def list():
         py_user_id = session["user_id"]
         conn = sqlite3.connect("cookie.db")
         c = conn.cursor()
-        c.execute("select id, task from tasks WHERE user_id = ?",(py_user_id,))
+        c.execute("SELECT id, task FROM tasks WHERE user_id = ?",(py_user_id,))
         # タスクリストを入れる配列を定義
         task_list = []
         for row in c.fetchall():
@@ -122,31 +122,29 @@ def edit(id):
         c.execute("SELECT task FROM tasks WHERE id = ?;",(id,))
         task = c.fetchone()
         c.close()
-        print(task)
-
-        if task == None:
-            return redirect("/list")
+        if task is not None:
+            task = task[0]
         else:
-            return render_template("edit.html",task_id = id,task = task)
+            return "タスクがないよ"
+        item = {"id":id, "task":task} 
+        return render_template("edit.html",item = item)
    
     else:
         return redirect("/login")
 
-
-@app.route("/edit",methods = ["POST"])
+# タスクの内容を編集（更新）する機能
+@app.route("/edit", methods = ["POST"])
 def edit_post():
     # 入力フォームからデータを受け取る
-    py_task = request.form.get("task")
-    py_id = request.form.get("task_id")
+    task = request.form.get("task")
+    task_id = request.form.get("task_id")
     # DB接続
     conn = sqlite3.connect("cookie.db")
     c = conn.cursor()
-    print(py_task)
     # breakpoint()
-    c.execute("UPDATE tasks SET task= ? where id =?",(py_task,py_id))
+    c.execute("UPDATE tasks SET task= ? WHERE id =?",(task,task_id))
     conn.commit()
     conn.close()
-    print(py_task)
     return redirect("/list")
 
 # 削除機能をつくっていくよー
