@@ -3,7 +3,15 @@
 
 
 
-<p>edit</p>
+
+  <form action="/edit" method="post">
+    <input type="hidden" name="task_id" value="{{item['id']}}" >
+    <input type="text" size="50" maxlength="50" name="task" value="{{item['task']}}">
+    <input type="submit" name="save" value="更新">
+  </form>
+
+  <button><a href="/list">リスト一覧に移動</a></button>
+
 
 
 
